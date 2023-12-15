@@ -4,20 +4,23 @@ import PokemonCard from './components/PokemonCard'
 import NavBar from './components/NavBar';
 
 
-function App() {
-  const [PokemondIndex, setPokemonIndex] = useState(0);
-  return (
-    
-    <div>
-      <PokemonCard pokemon = {pokemonList[PokemondIndex]} />
-      <NavBar  setPokemonIndex={setPokemonIndex} PokemondIndex={PokemondIndex}
-      pokemonList={pokemonList}/>
-    
-    </div>
-    
-  )
-
+ function App() {
+    const [selectedPokemon, setSelectedPokemon] = useState(pokemonList[0]);
   
+    const handlePokemonSelection = (pokemon) => {
+      setSelectedPokemon(pokemon);
+    };
+
+  return (
+    <div>
+
+      <PokemonCard pokemon={selectedPokemon} />
+         <NavBar
+        pokemonList={pokemonList}
+        handlePokemonSelection={handlePokemonSelection}
+      />
+    </div>
+  );
 }
 const pokemonList = [
 
